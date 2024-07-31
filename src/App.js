@@ -2,6 +2,9 @@ import React from "react";
 import { useEffect, useReducer } from "react";
 import "./styles/app.css";
 import stateReducer from "./utils/dispatch.js";
+import Board from "./components/board/board.js";
+import Header from "./components/Header.js";
+import StartButton from "./components/startButton.js";
 
 const App = () => {
   const [state, dispatch] = useReducer(stateReducer, {
@@ -27,7 +30,13 @@ const App = () => {
     return () => clearTimeout(timerId);
   }, [state.timer, state.running]);
 
-  return <div className="container"> {state.timer} </div>;
+  return (
+    <div className="container">
+      <Header state={state} dispatch={dispatch} />
+      <Board state={state} dispatch={dispatch} />
+      <StartButton state={state} dispatch={dispatch} />
+    </div>
+  );
 };
 
 export default App;
