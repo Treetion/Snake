@@ -1,6 +1,5 @@
 import React from "react";
-import GRID_SIZE from "./params";
-import { jsx } from "react/jsx-runtime";
+import GRID_SIZE from "@/utils/params";
 
 const stateReducer = (state, action) => {
   const type = action.type;

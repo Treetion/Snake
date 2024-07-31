@@ -11,6 +11,11 @@ module.exports = {
     filename: "[name].[contenthash].js",
     clean: true,
   },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
+  },
   devtool: "source-map",
   devServer: {
     static: {
