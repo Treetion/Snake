@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useReducer } from "react";
 import "@/styles/app.css";
-import stateReducer from "@/utils/dispatch.js";
+import reducer from "@/utils/reducer.js";
 import handleTimer from "@/utils/handleTimer";
 import moveSnake from "@/utils/moveSnake";
 import addKeyDownListener from "@/utils/addKeyDownListener";
@@ -10,9 +10,10 @@ import Header from "@/components/Header.js";
 import StartButton from "@/components/startButton.js";
 
 const App = () => {
-  const [state, dispatch] = useReducer(stateReducer, {
+  const [state, dispatch] = useReducer(reducer, {
     timer: 0,
     running: true,
+    gameOver: false,
     direction: [0, 1],
     snake: [
       JSON.stringify([0, 0]),
@@ -25,15 +26,18 @@ const App = () => {
   });
 
   useEffect(() => {
+    // Increments timer every second when game is running
     const timeoutId = handleTimer(state.running, dispatch);
     return () => clearTimeout(timeoutId);
   }, [state.timer, state.running]);
 
   useEffect(() => {
-    moveSnake(state.running, state.timer, dispatch);
+    // Handles snaking moving every second when game is running
+    moveSnake(state, dispatch);
   }, [state.timer]);
 
   useEffect(() => {
+    // Handles keydown listener for arrow keys and changing directions
     const removeListener = addKeyDownListener(dispatch, state.direction);
     return () => removeListener();
   }, [state.timer]);
