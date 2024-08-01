@@ -1,0 +1,18 @@
+.board-cell {
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  align-content: center;
+}
+
+.board-cell--head {
+  background-color: #54902e;
+}
+
+.board-cell--body {
+  background-color: #3c6721;
+}
+
+.board-cell--food {
+  background-color: yellow;
+}

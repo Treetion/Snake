@@ -15,13 +15,13 @@ const stateReducer = (state, action) => {
       return { ...state, timer: 0 };
     }
 
-    case "advance snake": {
+    case "move snake": {
       const head = JSON.parse(state.snake[state.snake.length - 1]);
-      const newHead = [
-        head[0] + state.direction[0],
-        head[1] + state.direciton[1],
-      ];
-      const newSnake = [...state, JSON.stringify(newHead)];
+      const newHead = wrapSnake(
+        [head[0] + state.direction[0], head[1] + state.direction[1]],
+        GRID_SIZE,
+      );
+      const newSnake = [...state.snake, JSON.stringify(newHead)];
 
       if (data && data === "eat") {
         return { ...state, snake: newSnake };
@@ -82,6 +82,19 @@ const stateReducer = (state, action) => {
       }
     }
 
+    case "reset": {
+      // Update food logic, make food an impossible big coord when resetting
+      return {
+        ...state,
+        timer: 0,
+        running: false,
+        direction: [0, 1],
+        snake: [JSON.stringify([0, 0]), JSON.stringify([0, 1])],
+        food: [2, 5],
+        score: 0,
+      };
+    }
+
     default: {
       warnInvalidAction();
     }
@@ -90,6 +103,20 @@ const stateReducer = (state, action) => {
 
 const warnInvalidAction = (action) => {
   console.warn("Invalid dispatch action", action);
+};
+
+const wrapSnake = (head, GRID_SIZE) => {
+  if (head[0] === GRID_SIZE) {
+    return [0, head[1]];
+  } else if (head[1] === GRID_SIZE) {
+    return [head[0], 0];
+  } else if (head[0] === -1) {
+    return [GRID_SIZE - 1, head[1]];
+  } else if (head[1] === -1) {
+    return [head[0], GRID_SIZE - 1];
+  } else {
+    return head;
+  }
 };
 
 export default stateReducer;

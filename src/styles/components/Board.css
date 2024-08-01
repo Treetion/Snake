@@ -1,0 +1,18 @@
+.board {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  height: 1000px;
+  align-items: center;
+  align-content: center;
+}
+
+.board-row {
+  width: 1000px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+}
