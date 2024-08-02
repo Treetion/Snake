@@ -48,7 +48,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "Snake Game",
-      filename: "index.html",
+      filename: "Snake.html",
       template: "src/template.html",
     }),
   ],
