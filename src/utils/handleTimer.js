@@ -5,7 +5,7 @@ const handleTimer = (running, dispatch) => {
   if (running) {
     timeoutId = setTimeout(() => {
       dispatch({ type: "increment timer" });
-    }, 1000);
+    }, 500);
   } else {
     dispatch({ type: "reset timer" });
   }
