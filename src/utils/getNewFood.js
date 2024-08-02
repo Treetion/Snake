@@ -1,9 +1,10 @@
 import React from "react";
 import GRID_SIZE from "@/utils/params";
 
-const getNewFood = (snake, dispatch) => {
+const getNewFood = (state, dispatch) => {
+  const snake = state.snake;
   if (snake.length < GRID_SIZE * GRID_SIZE) {
-    const newFood = getNewFoodCoord(snake, GRID_SIZE);
+    const newFood = getNewFoodCoord(state, GRID_SIZE);
     dispatch({ type: "food", data: newFood });
   } else {
     // If snake is filling up the entire grid, set food location to outside of board so it's not visible
@@ -11,12 +12,13 @@ const getNewFood = (snake, dispatch) => {
   }
 };
 
-const getNewFoodCoord = (snake, GRID_SIZE) => {
+const getNewFoodCoord = (state, GRID_SIZE) => {
   const free_cells = [];
+  const snake = state.snake;
   for (let x = 0; x < GRID_SIZE; x++) {
     for (let y = 0; y < GRID_SIZE; y++) {
       const coords = JSON.stringify([x, y]);
-      if (!snake.includes(coords)) {
+      if (!snake.includes(coords) && coords !== JSON.stringify(state.food)) {
         free_cells.push(coords);
       }
     }

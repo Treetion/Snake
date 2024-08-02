@@ -14,7 +14,7 @@ const moveSnake = (state, dispatch) => {
       dispatch({ type: "snake", data: newSnake });
       const newScore = state.score + 1;
       dispatch({ type: "score", data: newScore });
-      getNewFood(state.snake, dispatch);
+      getNewFood(state, dispatch);
     } else {
       // If next cell is empty
       newSnake.shift();

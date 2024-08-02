@@ -18,7 +18,7 @@ const startGame = (state, dispatch) => {
   // reset score
   dispatch({ type: "score", data: 0 });
   // get new food
-  getNewFood(state.snake, dispatch);
+  getNewFood(state, dispatch);
   // set Running to true
   dispatch({ type: "start" });
 };
