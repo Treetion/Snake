@@ -7,14 +7,17 @@ const mapArr = Array(GRID_SIZE).fill(null);
 
 const Board = ({ state, dispatch }) => {
   return (
-    <div className="board">
-      {mapArr.map((_, x) => (
-        <div className="board-row" key={x}>
-          {mapArr.map((_, y) => (
-            <Cell key={`${x}-${y}`} x={x} y={y} state={state} />
-          ))}
-        </div>
-      ))}
+    <div className="board-container">
+      <div className="board">
+        {mapArr.map((_, x) => (
+          <div className="board-row" key={x}>
+            {mapArr.map((_, y) => (
+              <Cell key={`${x}-${y}`} x={x} y={y} state={state} />
+            ))}
+          </div>
+        ))}
+        {state.gameOver && <div className="message"> GAME FUCKING OVER </div>}
+      </div>
     </div>
   );
 };

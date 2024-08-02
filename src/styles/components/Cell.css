@@ -1,6 +1,7 @@
 .board-cell {
   text-align: center;
   align-content: center;
+  box-sizing: border-box;
 }
 
 .board-cell--head {
