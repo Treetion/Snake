@@ -1,0 +1,30 @@
+.header {
+  width: 1000px;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.score {
+  color: #ead8c0;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 35px;
+}
+
+.high-score {
+  color: #ead8c0;
+  font-weight: bold;
+  font-size: 20px;
+  width: 160px;
+  text-align: left;
+}
+
+.title {
+  color: #ead8c0;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}

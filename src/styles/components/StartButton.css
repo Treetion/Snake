@@ -1,0 +1,14 @@
+.start-button {
+  background-color: #a79277;
+  color: black;
+  border: 0px transparent;
+  border-radius: 80px;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  width: 250px;
+  height: 60px;
+  margin-top: 30px;
+}
