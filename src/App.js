@@ -15,6 +15,7 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, {
     timer: 0,
     running: false,
+    gameOver: false,
     direction: [0, 1],
     snake: [
       JSON.stringify([0, 0]),

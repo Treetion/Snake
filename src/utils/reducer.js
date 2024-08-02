@@ -49,11 +49,11 @@ const reducer = (state, action) => {
     }
 
     case "start": {
-      return { ...state, running: true };
+      return { ...state, running: true, gameOver: false };
     }
 
     case "end": {
-      return { ...state, running: false };
+      return { ...state, running: false, gameOver: true };
     }
 
     case "score": {
