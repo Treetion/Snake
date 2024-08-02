@@ -15,20 +15,13 @@ const reducer = (state, action) => {
       return { ...state, timer: 0 };
     }
 
-    case "move": {
-      if (data && typeof data === "string") {
-        const newSnake = [...state.snake, data];
-        return { ...state, snake: newSnake };
+    case "snake": {
+      if (Array.isArray(data)) {
+        return { ...state, snake: data };
       } else {
         warnInvalidAction();
         break;
       }
-    }
-
-    case "shift": {
-      const newSnake = [...state.snake];
-      newSnake.shift();
-      return { ...state, snake: newSnake };
     }
 
     case "change direction": {

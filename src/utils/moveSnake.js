@@ -1,6 +1,7 @@
 import React from "react";
 import GRID_SIZE from "@/utils/params";
 import getNewFood from "@/utils/getNewFood";
+import gameOver from "@/utils/gameOver";
 
 const moveSnake = (state, dispatch) => {
   if (state.running && state.timer > 0) {
@@ -12,21 +13,23 @@ const moveSnake = (state, dispatch) => {
       ),
     );
     const food = JSON.stringify(state.food);
+    const newSnake = [...state.snake];
+    newSnake.push(newHead);
 
     if (state.snake.includes(newHead)) {
       // If next cell is snake
       // TODO: Make game over logic here
-      dispatch({ type: "move", data: newHead });
-      dispatch({ type: "shift" });
+      newSnake.shift();
+      dispatch({ type: "snake", data: newSnake });
     } else if (newHead === food) {
       // If next cell is food
-      dispatch({ type: "move", data: newHead });
+      dispatch({ type: "snake", data: newSnake });
       dispatch({ type: "increment score" });
       getNewFood(state.snake, dispatch);
     } else {
       // If next cell is empty
-      dispatch({ type: "move", data: newHead });
-      dispatch({ type: "shift" });
+      newSnake.shift();
+      dispatch({ type: "snake", data: newSnake });
     }
   }
 };
