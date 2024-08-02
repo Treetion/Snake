@@ -37,7 +37,7 @@ const createKeyDownHandler = (dispatch, direction) => {
     }
 
     if (newDir.length === 2 && opposite !== dirStr) {
-      dispatch({ type: "change direction", data: newDir });
+      dispatch({ type: "direction", data: newDir });
     }
   };
 };

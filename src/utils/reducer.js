@@ -1,9 +1,8 @@
 import React from "react";
-import GRID_SIZE from "@/utils/params";
 
 const reducer = (state, action) => {
   const type = action.type;
-  const data = action.data ? action.data : null;
+  const data = action.data;
 
   switch (type) {
     case "increment timer": {
@@ -19,12 +18,12 @@ const reducer = (state, action) => {
       if (Array.isArray(data)) {
         return { ...state, snake: data };
       } else {
-        warnInvalidAction();
+        warnInvalidAction(action);
         break;
       }
     }
 
-    case "change direction": {
+    case "direction": {
       const dataStr = JSON.stringify(data);
       const possibleDirs = [
         JSON.stringify([0, 1]),
@@ -32,19 +31,19 @@ const reducer = (state, action) => {
         JSON.stringify([1, 0]),
         JSON.stringify([-1, 0]),
       ];
-      if (data && possibleDirs.includes(dataStr)) {
+      if (possibleDirs.includes(dataStr)) {
         return { ...state, direction: data };
       } else {
-        warnInvalidAction();
+        warnInvalidAction(action);
         break;
       }
     }
 
-    case "update food": {
-      if (data && Array.isArray(data) && data.length === 2) {
+    case "food": {
+      if (Array.isArray(data) && data.length === 2) {
         return { ...state, food: data };
       } else {
-        warnInvalidAction();
+        warnInvalidAction(action);
         break;
       }
     }
@@ -57,35 +56,26 @@ const reducer = (state, action) => {
       return { ...state, running: false };
     }
 
-    case "increment score": {
-      const newScore = state.score + 1;
-      return { ...state, score: newScore };
-    }
-
-    case "set high score": {
+    case "score": {
       if (typeof data === "number") {
-        return { ...state, highScore: data };
+        return { ...state, score: data };
       } else {
-        warnInvalidAction();
+        warnInvalidAction(action);
         break;
       }
     }
 
-    case "reset": {
-      // Update food logic, make food an impossible big coord when resetting
-      return {
-        ...state,
-        timer: 0,
-        running: false,
-        direction: [0, 1],
-        snake: [JSON.stringify([0, 0]), JSON.stringify([0, 1])],
-        food: [GRID_SIZE + 1, GRID_SIZE + 1],
-        score: 0,
-      };
+    case "high score": {
+      if (typeof data === "number") {
+        return { ...state, highScore: data };
+      } else {
+        warnInvalidAction(action);
+        break;
+      }
     }
 
     default: {
-      warnInvalidAction();
+      warnInvalidAction(action);
     }
   }
 };

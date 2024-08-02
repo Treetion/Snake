@@ -4,10 +4,10 @@ import GRID_SIZE from "@/utils/params";
 const getNewFood = (snake, dispatch) => {
   if (snake.length < GRID_SIZE * GRID_SIZE) {
     const newFood = getNewFoodCoord(snake, GRID_SIZE);
-    dispatch({ type: "update food", data: newFood });
+    dispatch({ type: "food", data: newFood });
   } else {
     // If snake is filling up the entire grid, set food location to outside of board so it's not visible
-    dispatch({ type: "update food", data: [GRID_SIZE + 1, GRID_SIZE + 1] });
+    dispatch({ type: "food", data: [-1, -1] });
   }
 };
 
