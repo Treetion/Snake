@@ -1,9 +1,17 @@
 import React from "react";
-import "@/styles/components/Cell.css";
 import PropTypes from "prop-types";
+import "@/styles/components/Cell.css";
+import GRID_SIZE from "@/utils/params";
 
 const Cell = ({ x, y, state }) => {
-  return <div className={getClass(x, y, state.snake, state.food)} />;
+  const cellSize = 1000 / GRID_SIZE;
+
+  return (
+    <div
+      className={getClass(x, y, state.snake, state.food)}
+      style={{ width: cellSize, height: cellSize }}
+    />
+  );
 };
 
 Cell.propTypes = {
