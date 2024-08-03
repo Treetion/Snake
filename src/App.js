@@ -7,9 +7,9 @@ import moveSnake from "@/utils/moveSnake";
 import addKeyDownListener from "@/utils/addKeyDownListener";
 import handleGameOver from "@/utils/handleGameOver";
 import checkIfGameOver from "@/utils/checkIfGameOver";
-import Board from "@/components/board/board.js";
+import Board from "@/components/Board/Board.js";
 import Header from "@/components/Header.js";
-import StartButton from "@/components/startButton.js";
+import StartButton from "@/components/StartButton.js";
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, {
