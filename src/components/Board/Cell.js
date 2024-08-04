@@ -4,7 +4,7 @@ import "@/styles/components/Cell.css";
 import GRID_SIZE from "@/utils/params";
 
 const Cell = ({ x, y, state }) => {
-  const cellSize = 1000 / GRID_SIZE;
+  const cellSize = 700 / GRID_SIZE;
 
   return (
     <div

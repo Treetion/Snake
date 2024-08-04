@@ -3,11 +3,11 @@
   color: black;
   border: 0px transparent;
   border-radius: 80px;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   cursor: pointer;
-  width: 250px;
-  height: 60px;
-  margin-top: 30px;
+  width: 200px;
+  height: 45px;
+  margin-top: 20px;
 }
